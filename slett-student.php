@@ -14,28 +14,26 @@ include("dynamiske-funksjoner.php");  /* dynamiske funksjoner inkludert */
 </form>
 
 <?php 
-  if (isset($_POST ["slettStudentKnapp"])) /* Sjekker om knappen er trykket*/
+  if (isset($_POST["slettStudentKnapp"]))
     {
-      $brukernavn=$_POST ["brukernavn"];
+      $brukernavn = $_POST["student"];   /* samme navn som i select-feltet */
 
-      include("db-tilkobling.php");  /* tilkobling til database-serveren utført og valg av database foretatt */
+      include("db-tilkobling.php");
 
-          $sqlSetning="SELECT * FROM student WHERE brukernavn='$brukernavn';";
-          $sqlResultat=mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; hente data fra databasen");
-          $antallRader=mysqli_num_rows($sqlResultat); 
+      $sqlSetning = "SELECT * FROM student WHERE brukernavn='$brukernavn';";
+      $sqlResultat = mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; hente data fra databasen");
+      $antallRader = mysqli_num_rows($sqlResultat);
 
-         if ($antallRader > 0)  /* Sjekker om antall rader er større enn 0 */
-            {
-              print ("Finner ikke noen elever i klassen, slette klassen er ikke mulig");
-            }
-          else
-            {	  
-              $sqlSetning="DELETE FROM student WHERE brukernavn='$brukernavn';";
-              mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; slette data i databasen");
-                /* SQL-setning sendt til database-serveren */
-		
-              print ("F&oslash;lgende student er n&aring; slettet: $brukernavn  <br />");
-            }
+      if ($antallRader == 0)   /* ingen student funnet */
+        {
+          print ("Finner ikke studenten, sletting er ikke mulig");
+        }
+      else
+        {
+          $sqlSetning = "DELETE FROM student WHERE brukernavn='$brukernavn';";
+          mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; slette data i databasen");
 
+          print ("F&oslash;lgende student er n&aring; slettet: $brukernavn <br />");
+        }
     }
 ?>
