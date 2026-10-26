@@ -16,11 +16,11 @@ include("dynamiske-funksjoner.php");  /* dynamiske funksjoner inkludert */
 <?php 
   if (isset($_POST ["slettStudentKnapp"])) /* Sjekker om knappen er trykket*/
     {
-      $studentkode=$_POST ["brukernavn"];
+      $brukernavn=$_POST ["brukernavn"];
 
       include("db-tilkobling.php");  /* tilkobling til database-serveren utført og valg av database foretatt */
 
-          $sqlSetning="SELECT * FROM student WHERE klassekode='$brukernavn';";
+          $sqlSetning="SELECT * FROM student WHERE brukernavn='$brukernavn';";
           $sqlResultat=mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; hente data fra databasen");
           $antallRader=mysqli_num_rows($sqlResultat); 
 
@@ -30,7 +30,7 @@ include("dynamiske-funksjoner.php");  /* dynamiske funksjoner inkludert */
             }
           else
             {	  
-              $sqlSetning="DELETE FROM student WHERE klassekode='$brukernavn';";
+              $sqlSetning="DELETE FROM student WHERE brukernavn='$brukernavn';";
               mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; slette data i databasen");
                 /* SQL-setning sendt til database-serveren */
 		
