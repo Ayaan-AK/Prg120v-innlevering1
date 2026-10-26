@@ -1,8 +1,4 @@
-<?php  /* slett-kla sse */
-/*
-/*  Programmet lager et html-skjema for å registrere en student
-/*  Programmet registrerer data (brukernavn, fornavn, etternavn og klassekode) i databasen
-*/
+<?php  /* slett-klasse */
 include("dynamiske-funksjoner.php");  /* dynamiske funksjoner inkludert */
 ?> 
 <script src="funksjoner.js"></script>
@@ -18,7 +14,7 @@ include("dynamiske-funksjoner.php");  /* dynamiske funksjoner inkludert */
 </form>
 
 <?php 
-  if (isset($_POST ["slettKlasseKnapp"]))
+  if (isset($_POST ["slettKlasseKnapp"])) /* Sjekker om knappen er trykket*/
     {
       $klassekode=$_POST ["klassekode"];
 
@@ -28,7 +24,7 @@ include("dynamiske-funksjoner.php");  /* dynamiske funksjoner inkludert */
           $sqlResultat=mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; hente data fra databasen");
           $antallRader=mysqli_num_rows($sqlResultat); 
 
-         if ($antallRader > 0)  /* Det er elever i klassen*/
+         if ($antallRader > 0)  /* Sjekker om antall rader er mindre enn = 0 hvis rader er mer tilsvarer det at en bruker er i klassen*/
             {
               print ("Elever er registrert i klassen, slette klassen er ikke mulig");
             }
