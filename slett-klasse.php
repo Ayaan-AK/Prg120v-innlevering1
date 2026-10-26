@@ -24,13 +24,13 @@ include("dynamiske-funksjoner.php");  /* dynamiske funksjoner inkludert */
 
       include("db-tilkobling.php");  /* tilkobling til database-serveren utført og valg av database foretatt */
 
-          $sqlSetning="SELECT * FROM student WHERE klassekode='$klassekode';";
+          $sqlSetning="SELECT * FROM klasse WHERE klassekode='$klassekode';";
           $sqlResultat=mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; hente data fra databasen");
           $antallRader=mysqli_num_rows($sqlResultat); 
 
-         if ($antallRader==0)  /* klasse er ikke registrert */
+         if ($antallRader > 0)  /* Det er elever i klassen*/
             {
-              print ("Klassen finnes ikke");
+              print ("Elever er registrert i klassen, slette klassen er ikke mulig");
             }
           else
             {	  
