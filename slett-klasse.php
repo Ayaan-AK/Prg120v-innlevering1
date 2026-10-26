@@ -5,7 +5,7 @@
 */
 include("dynamiske-funksjoner.php");  /* dynamiske funksjoner inkludert */
 ?> 
-
+<script src="funksjoner.js"></script>
 <h3>Slett klasse</h3>
 
 <form method="post" action="" id="Slettklasse" name="Slettklasse">
@@ -14,7 +14,7 @@ include("dynamiske-funksjoner.php");  /* dynamiske funksjoner inkludert */
     <option value="">Velg klasse</option>
     <?php listeboksKlassekode();  /* funksjon for å lage listeboks for klassekode kalt */ ?>
   </select> <br/>
-  <input type="submit" value="Slett klasse" id="slettKlasseKnapp" name="slettKlasseKnapp" /> 
+  <input type="submit" value="Slett klasse" id="slettKlasseKnapp" name="slettKlasseKnapp" onclick="return bekreft()" /> 
 </form>
 
 <?php 
