@@ -24,7 +24,7 @@ include("dynamiske-funksjoner.php");  /* dynamiske funksjoner inkludert */
 
       include("db-tilkobling.php");  /* tilkobling til database-serveren utført og valg av database foretatt */
 
-          $sqlSetning="SELECT * FROM klasse WHERE klassekode='$klassekode';";
+          $sqlSetning="SELECT * FROM student WHERE klassekode='$klassekode';";
           $sqlResultat=mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; hente data fra databasen");
           $antallRader=mysqli_num_rows($sqlResultat); 
 
