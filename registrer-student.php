@@ -3,6 +3,7 @@
 /*  Programmet lager et html-skjema for å registrere en student
 /*  Programmet registrerer data (brukernavn, fornavn, etternavn og klassekode) i databasen
 */
+include("dynamiske-funksjoner.php");  /* dynamiske funksjoner inkludert */
 ?> 
 
 <h3>Registrer student</h3>
@@ -11,7 +12,11 @@
   Brukernavn <input type="text" id="brukernavn" name="brukernavn" required /> <br/>
   Fornavn <input type="text" id="fornavn" name="fornavn" required /> <br/>
   Etternavn <input type="text" id="etternavn" name="etternavn" required /> <br/>
-  Klassekode <input type="text" id="klassekode" name="klassekode" required /> <br/>
+  Klassekode 
+  <select id="klassekode" name="klassekode" required>
+    <option value="">Velg klasse</option>
+    <?php listeboksKlassekode();  /* funksjon for å lage listeboks for klassekode kalt */ ?>
+  </select> <br/>
   <input type="submit" value="Registrer student" id="registrerStudentKnapp" name="registrerStudentKnapp" /> 
   <input type="reset" value="Nullstill" id="nullstill" name="nullstill" /> <br />
 </form>
